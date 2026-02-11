@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Bar Labea</title>
+	<link rel="stylesheet" href="styles/styles.css">
+	<script src="/js/msg.js"></script>
+</head>
+
+<body>
+
+	<div th:include="plantillas/plantilla.html::cabecera"></div>
+
+	<div th:include="plantillas/plantilla.html::menu"></div>
+
+	<main>
+		<section>
+			<h2>Insertar Nueva Película</h2>
+
+			<form th:action="@{/GuardarPelicula}" th:object="${obj_peli}" method="post">
+
+				<div style="flex: 1 1 100%;">
+					<label for="titulo">Título de la Película:</label>
+					<input type="text" id="titulo" th:field="*{titulo}" placeholder="Ej: Inception" required />
+				</div>
+
+				<div style="flex: 1 1 45%;">
+					<label for="duracion">Duración:</label>
+					<input type="text" th:field="*{duracion}" pattern="^[0-9]+\smin$"
+						title="Formato requerido: número seguido de 'min'. Ej: 120 min" placeholder="Ej: 120 min" required />
+				</div>
+
+				<div style="flex: 1 1 45%;">
+					<label for="genero">Género:</label>
+					<select id="genero" th:field="*{genero.id}" required>
+						<option value="" selected disabled>--- Selecciona un género ---</option>
+						<option th:each="g : ${listaGeneros}" th:value="${g.id}" th:text="${g.nombre}">
+						</option>
+					</select>
+				</div>
+
+				<div style="flex: 1 1 100%; display: flex; gap: 10px; margin-top: 10px;">
+					<button type="submit">Guardar Película</button>
+					<button type="reset">Limpiar Formulario</button>
+				</div>
+
+			</form>
+
+
+			<h2>Generos</h2>
+			<table id="tabla">
+				<thead>
+					<tr>
+						<th>Titulo</th>
+						<th>Duración</th>
+						<th>Género</th>
+						<th th:if="${session.s_rol=='ADMIN'}">Opciones</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr th:each="elem : ${listaPelis}">
+						<td th:text="${elem.titulo}"></td>
+						<td th:text="${elem.duracion}"></td>
+						<td th:text="${elem.genero.nombre}"></td>
+						<td th:if="${session.s_rol=='ADMIN'}">
+							<a th:href="@{/FrmModificarPelicula(id=${elem.id})}">Modificar</a>
+							<a th:href="@{/BorrarPelicula(id=${elem.id})}"
+								onclick="return confirm('¿Estás seguro de que deseas borrar esta película?');">
+								Borrar
+							</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+		</section>
+		<input type="hidden" id="flash_mensaje" th:value="${s_mensaje}" />
+
+		<script>
+			// Se ejecuta cuando la página termina de cargar
+			window.onload = function () {
+				var texto = document.getElementById("flash_mensaje").value;
+
+				// Si el input tiene texto (no está vacío), lanzamos el alert
+				if (texto && texto.trim() !== "") {
+					alert(texto);
+				}
+			};
+		</script>
+	</main>
+
+	<div th:include="plantillas/plantilla.html::pie"></div>
+</body>
+
+</html>

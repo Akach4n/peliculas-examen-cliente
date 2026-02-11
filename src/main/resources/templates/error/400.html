@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bar Labea</title>
+    <link rel="stylesheet" href="styles/styles.css">
+	<link rel="stylesheet" href="styles/loginStyles.css">
+	<script src="/js/sha256login.js"></script>
+</head>
+
+<body>
+	
+<div th:include="plantillas/plantilla.html::cabecera"></div>
+
+    <main>
+		<section>
+			<h1>Parámetros introducidos no válidos</h1>
+			<a th:href="@{/MenuPrincipal}">Volver</a>
+		</section>
+	</main>
+
+<div th:include="plantillas/plantilla.html::pie"></div>
+
+</body>
+
+</html>

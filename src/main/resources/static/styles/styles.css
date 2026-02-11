@@ -1,0 +1,279 @@
+/* Variables para facilitar cambios de color */
+:root {
+    --primario: #2c3e50;
+    --acento: #e67e22;
+    --fondo: #f4f4f4;
+    --texto: #333;
+    --paddingGeneral: 10px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Estructura General */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-color: var(--fondo);
+    color: var(--texto);
+}
+
+/* Header (Cabecera) */
+header {
+    background-color: var(--primario);
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start; 
+    align-items: center;
+    padding: var(--paddingGeneral);
+    min-height: 70px;
+}
+
+header a {
+    color: var(--acento);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#cabecera_izq {
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+#cabecera_cen {
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#cabecera_der {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 15px;
+}
+
+header h1 {
+    margin: 0;
+    letter-spacing: 2px;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
+/* Nav (Menú) */
+nav {
+    background: #fff;
+    border-bottom: 2px solid var(--acento);
+    display: flex;
+    justify-content: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+}
+
+nav a {
+    padding: 1rem 1.5rem;
+    text-decoration: none;
+    color: var(--primario);
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    background: var(--acento);
+    color: white;
+}
+
+/* Main y Secciones */
+main {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+section h2 {
+    color: var(--primario);
+    border-bottom: 2px solid #eee;
+    padding-bottom: 0.5rem;
+}
+
+/* Formulario */
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    background: #fafafa;
+    padding: 1.5rem;
+    border-radius: 5px;
+    border: 1px solid #eee;
+}
+
+form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.2rem;
+}
+
+form input, form select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+/* MODIFICACIÓN: Estilo unificado para botones y enlace de cancelar */
+form button, .btn-cancelar {
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+    /* Reset para el enlace <a> */
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    font-size: 13.3px; /* Ajuste para igualar tamaño de fuente de button */
+}
+
+form button[type="submit"] {
+    background: var(--acento);
+    color: white;
+}
+
+/* Ambos botones (Reset y Cancelar) en gris */
+form button[type="reset"], .btn-cancelar {
+    background: #95a5a6;
+    color: white;
+}
+
+form button:hover, .btn-cancelar:hover {
+    filter: brightness(1.1);
+    color: white; /* Asegura que el texto siga blanco en el hover del link */
+}
+
+/* Tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+}
+
+th {
+    background: var(--primario);
+    color: white;
+    padding: 12px 10px;
+    text-align: left;
+}
+
+td {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+/* Enlaces dentro de la tabla */
+td a {
+    color: var(--acento);
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+td a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.9rem;
+    color: #777;
+}
+/* loginStyles.css - VERSIÓN FINAL ANTIBUG */
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    background-color: var(--fondo);
+    padding: 20px;
+}
+
+.login-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+    border-top: 5px solid var(--acento);
+}
+
+.login-card h2 {
+    text-align: center;
+    color: var(--primario);
+    margin-bottom: 2rem;
+}
+
+/* Forzamos que el formulario de login ignore los estilos de rejilla del general */
+#mainSinMenu .login-form {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+}
+
+#mainSinMenu .form-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#mainSinMenu label {
+    margin-bottom: 0.5rem;
+    color: var(--primario);
+    font-weight: bold;
+}
+
+/* Estilo para el botón de enviar */
+#mainSinMenu input[type="submit"] {
+    background-color: var(--acento) !important;
+    color: white !important;
+    padding: 1rem !important;
+    border: none !important;
+    border-radius: 4px !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    width: 100% !important;
+    transition: 0.3s !important;
+    font-size: 1rem !important;
+    text-transform: uppercase;
+}
+
+/* ARREGLO DEL HOVER: Forzamos que el texto NO se pierda */
+#mainSinMenu input[type="submit"]:hover {
+    filter: brightness(0.9) !important; /* Lo oscurecemos un poco en vez de aclararlo */
+    color: white !important; /* Forzamos blanco sobre fondo oscuro */
+    box-shadow: 0 4px 15px rgba(230, 126, 34, 0.4) !important;
+    text-decoration: none !important;
+}

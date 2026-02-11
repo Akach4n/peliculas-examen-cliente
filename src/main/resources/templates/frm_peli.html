@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Bar Labea</title>
+	<link rel="stylesheet" href="styles/styles.css">
+	<script src="/js/msg.js"></script>
+</head>
+
+<body>
+
+	<div th:include="plantillas/plantilla.html::cabecera"></div>
+
+	<div th:include="plantillas/plantilla.html::menu"></div>
+
+	<main>
+		<section>
+			<h2>Insertar Nueva Película</h2>
+
+			<form th:action="@{/ModificarPelicula}" th:object="${obj_peli}" method="post">
+
+				<input type="hidden" th:field="*{id}">
+				<div style="flex: 1 1 100%;">
+					<label for="titulo">Título de la Película:</label>
+					<input type="text" id="titulo" th:field="*{titulo}" placeholder="Ej: Inception" required />
+				</div>
+
+				<div style="flex: 1 1 45%;">
+					<label for="duracion">Duración:</label>
+					<input type="text" th:field="*{duracion}" pattern="^[0-9]+\smin$"
+						title="Formato requerido: número seguido de 'min'. Ej: 120 min" placeholder="Ej: 120 min"
+						required />
+				</div>
+
+				<div style="flex: 1 1 45%;">
+					<label for="genero">Género:</label>
+					<select id="genero" th:field="*{genero.id}" required>
+						<option value="" selected disabled>--- Selecciona un género ---</option>
+						<option th:each="g : ${listaGeneros}" th:value="${g.id}" th:text="${g.nombre}">
+						</option>
+					</select>
+				</div>
+
+				<div style="flex: 1 1 100%; display: flex; gap: 10px; margin-top: 10px;">
+					<button type="submit">Guardar Película</button>
+					<a th:href="@{/MenuPrincipal}" class="btn-cancelar">Cancelar</a>
+				</div>
+
+			</form>
+	</main>
+
+	<div th:include="plantillas/plantilla.html::pie"></div>
+</body>
+
+</html>

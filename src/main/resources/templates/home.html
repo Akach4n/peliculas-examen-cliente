@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bar Labea</title>
+    <link rel="stylesheet" href="styles/styles.css">
+	<link rel="stylesheet" href="styles/loginStyles.css">
+	<script src="/js/sha256login.js"></script>
+</head>
+
+<body>
+	
+<div th:include="plantillas/plantilla.html::cabecera"></div>
+
+<main id="mainSinMenu" class="login-container">
+    <section id="sectionSinMenu" class="login-card">
+        <h2>Identificación</h2>
+        <form th:action="@{/Login}" method="post" th:object="${obj_usuario}" class="login-form">
+            <div class="form-group">
+                <label>Usuario</label>
+                <input type="text" th:field="*{user}" placeholder="Introduce tu usuario" required>
+            </div>
+
+            <div class="form-group">
+                <label>Contraseña</label>
+                <input type="password" id="pass_sin_hash" oninput="calcularSha256();" placeholder="••••••••" required>
+            </div>
+
+            <input type="hidden" th:field="*{pass}">
+            
+            <input type="submit" value="Entrar al Sistema" class="btn-login">
+        </form>
+    </section>
+
+    <input type="hidden" id="flash_mensaje" th:value="${s_mensaje}" />
+    <script>
+        window.onload = function() {
+            var texto = document.getElementById("flash_mensaje").value;
+            if (texto && texto.trim() !== "") {
+                alert(texto);
+            }
+        };
+    </script>
+</main>
+
+<div th:include="plantillas/plantilla.html::pie"></div>
+
+</body>
+
+</html>

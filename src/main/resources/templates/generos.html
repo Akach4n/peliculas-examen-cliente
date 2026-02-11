@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Bar Labea</title>
+	<link rel="stylesheet" href="styles/styles.css">
+</head>
+
+<body>
+
+	<div th:include="plantillas/plantilla.html::cabecera"></div>
+
+	<div th:include="plantillas/plantilla.html::menu"></div>
+
+	<main>
+		<section>
+			<h2>Generos</h2>
+			<table>
+				<thead>
+					<tr>
+						<th>Nombre</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr th:each="elem : ${listaGeneros}">
+						<td th:text="${elem.nombre}"></td>
+					</tr>
+				</tbody>
+			</table>
+
+		</section>
+	</main>
+
+	<div th:include="plantillas/plantilla.html::pie"></div>
+</body>
+
+</html>

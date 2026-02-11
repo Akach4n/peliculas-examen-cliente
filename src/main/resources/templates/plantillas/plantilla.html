@@ -1,0 +1,43 @@
+<div th:fragment="cabecera">
+    <header>
+        <div id="cabecera_izq">
+			<a th:href="@{/}"><img src="imagenes/logo.png" height="96px" width="96px"></a>
+            
+        </div>
+
+        <div id="cabecera_cen">
+            <h1>Videoclub bar karaoke</h1>
+            <h2>Gestión de peliculas</h2>
+        </div>
+
+        <div id="cabecera_der">
+			<span th:if="${session.s_token!=null}">
+				<a th:href="@{/Logout}">Cerrar sesion</a>
+			</span>
+            <img src="imagenes/facebook.png" height="48px" width="48px">
+            <img src="imagenes/instagram.png" height="48px" width="48px">
+        </div>
+    </header>
+</div>
+
+<div th:fragment="menu">	
+    <nav>
+        <ul>
+            <li>
+                <a th:href="@{/MenuPrincipal}">Peliculas</a>
+                <a th:href="@{/MenuGeneros}">Generos</a>
+            </li>
+      
+            
+        </ul>
+    </nav>
+</div>
+
+<div th:fragment="pie">	
+    <footer>
+		<h3>
+			<span class="copyleft">&COPY;</span> 
+			Ipartek, algunos derechos reservados
+		</h3>
+    </footer>
+</div>
