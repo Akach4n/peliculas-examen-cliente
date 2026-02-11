@@ -4,6 +4,7 @@ package com.ipartek.servicios;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -20,7 +21,8 @@ public class UsuarioServicioImp implements UsuarioServicio{
 
 	
 	private RestTemplate restTemplate= new RestTemplate();
-	private String URL= "http://localhost:8080/rest/api/v1/usuarios/";
+	@Value("${api.url}")
+    private String URL;
 	
 	
 	@Override

@@ -3,6 +3,7 @@ package com.ipartek.servicios;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -16,7 +17,8 @@ import com.ipartek.pojos.Pelicula;
 public class PeliculaServicioImp implements PeliculaServicio {
 	
 	private RestTemplate restTemplate= new RestTemplate();
-	private String URL= "http://localhost:8080/rest/api/v1/peliculas/";
+	@Value("${api.url}")
+    private String URL;
 
 	@Override
 	public List<Pelicula> obtenerPelis(String token) {
