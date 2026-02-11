@@ -17,10 +17,8 @@ import com.ipartek.pojos.Genero;
 public class GeneroServicioImp implements GeneroServicio{
 
 	private RestTemplate restTemplate = new RestTemplate();
-	@Value("${api.url}")
-    private String URL_BASE;
-	
-	private String URL = URL_BASE + "generos/";
+	@Value("${servicio.generos.url}")
+    private String URL;
 	
 	
 	@Override

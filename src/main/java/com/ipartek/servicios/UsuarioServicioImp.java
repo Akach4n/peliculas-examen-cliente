@@ -21,10 +21,8 @@ public class UsuarioServicioImp implements UsuarioServicio{
 
 	
 	private RestTemplate restTemplate= new RestTemplate();
-	@Value("${api.url}")
-    private String URL_BASE;
-	
-	private String URL = URL_BASE + "usuarios/";
+	@Value("${servicio.usuarios.url}")
+    private String URL;
 	
 	
 	@Override

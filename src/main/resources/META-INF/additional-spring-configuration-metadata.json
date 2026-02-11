@@ -8,5 +8,20 @@
     "name": "api.url",
     "type": "java.lang.String",
     "description": "A description for 'api.url'"
+  },
+  {
+    "name": "servicio.usuarios.url",
+    "type": "java.lang.String",
+    "description": "A description for 'servicio.usuarios.url'"
+  },
+  {
+    "name": "servicio.generos.url",
+    "type": "java.lang.String",
+    "description": "A description for 'servicio.generos.url'"
+  },
+  {
+    "name": "servicio.peliculas.url",
+    "type": "java.lang.String",
+    "description": "A description for 'servicio.peliculas.url'"
   }
 ]}

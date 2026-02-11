@@ -17,10 +17,8 @@ import com.ipartek.pojos.Pelicula;
 public class PeliculaServicioImp implements PeliculaServicio {
 	
 	private RestTemplate restTemplate= new RestTemplate();
-	@Value("${api.url}")
-    private String URL_BASE;
-
-	private String URL = URL_BASE + "peliculas/";
+	@Value("${servicio.peliculas.url}")
+    private String URL;
 	@Override
 	public List<Pelicula> obtenerPelis(String token) {
 		
